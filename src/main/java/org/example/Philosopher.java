@@ -1,6 +1,6 @@
 package org.example;
 
-import java.util.Random;
+import java.awt.*;
 
 public class Philosopher implements Runnable {
 
@@ -10,11 +10,11 @@ public class Philosopher implements Runnable {
 
     private GuiForm guiForm;
 
-    public Philosopher(){
+    public Philosopher() {
 
     }
 
-    public Philosopher(GuiForm guiForm, Fork leftFork, Fork rightFork, int id){
+    public Philosopher(GuiForm guiForm, Fork leftFork, Fork rightFork, int id) {
 
         this.guiForm = guiForm;
         this.leftFork = leftFork;
@@ -53,66 +53,60 @@ public class Philosopher implements Runnable {
 
     }
 
-    private String philosopherAction(String actionName, int forkId){
+    private String philosopherAction(String actionName, int forkId) {
 
         return Thread.currentThread().getName() + " " + actionName + " " + forkId;
-
-    }
-
-    private void threadSleep() throws InterruptedException {
-
-        Random random = new Random();
-
-        int delay = random.nextInt(1000) + 2500;
-
-        Thread.sleep(delay);
 
     }
 
     @Override
     public void run() {
 
-        try{
+        try {
 
-            while(true){
+            while (true) {
 
                 System.out.println(philosopherAction(System.nanoTime() + " thinking"));
-                guiForm.setTextPhilosopher(this.id, "thinking");
-                threadSleep();
+                guiForm.setTextPhilosopher(this.id, "thinking", Color.YELLOW);
+                guiForm.threadSleep(this.id);
+                guiForm.setTextPhilosopher(this.id, "hungry", Color.RED);
 
-                synchronized (leftFork){
+                synchronized (leftFork) {
 
                     System.out.println(philosopherAction(System.nanoTime() + " picked up left fork",
                             this.leftFork.getId()));
-                    guiForm.setTextFork(this.leftFork.getId(), "Owned by: " + this.getId());
+                    guiForm.setTextFork(this.leftFork.getId(), "Owned by: " + this.getId(), Color.RED);
 
-                    synchronized (rightFork){
+                    synchronized (rightFork) {
 
                         System.out.println(philosopherAction(System.nanoTime() + " picked up right fork - eating",
                                 this.rightFork.getId()));
-                        guiForm.setTextFork(this.rightFork.getId(), "Owned by: " + this.getId());
-                        guiForm.setTextPhilosopher(this.id, "eating");
-                        threadSleep();
+
+                        guiForm.setTextFork(this.rightFork.getId(), "Owned by: " + this.getId(), Color.RED);
+                        guiForm.setTextPhilosopher(this.id, "eating", Color.GREEN);
+
+                        guiForm.threadSleep(this.id);
 
                         System.out.println(philosopherAction(System.nanoTime() + " put down right fork",
                                 this.rightFork.getId()));
-                        guiForm.setTextFork(this.rightFork.getId(), "Free");
+
+                        guiForm.setTextFork(this.rightFork.getId(), "Free", Color.GREEN);
 
                     }
 
+                    System.out.println(philosopherAction(System.nanoTime() + "put down left fork",
+                            this.leftFork.getId()));
+                    guiForm.setTextFork(this.leftFork.getId(), "Free", Color.GREEN);
+
+                    System.out.println(philosopherAction(System.nanoTime() + " sleeping"));
+                    guiForm.setTextPhilosopher(this.id, "sleeping", Color.WHITE);
+                    guiForm.threadSleep(this.id);
+
                 }
-
-                System.out.println(philosopherAction(System.nanoTime() + "put down left fork",
-                        this.leftFork.getId()));
-                guiForm.setTextFork(this.leftFork.getId(), "Free");
-
-                System.out.println(philosopherAction(System.nanoTime() + " sleeping"));
-                guiForm.setTextPhilosopher(this.id, "sleeping");
-                threadSleep();
 
             }
 
-        } catch (InterruptedException interruptedException){
+        } catch (InterruptedException interruptedException) {
 
             interruptedException.printStackTrace();
 
