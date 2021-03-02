@@ -1,10 +1,8 @@
 package org.example;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 public class GuiForm extends JFrame implements ActionListener {
 
@@ -28,47 +26,8 @@ public class GuiForm extends JFrame implements ActionListener {
 
     private JPanel mainPanel;
 
-    private JTextField [] philoFieldArray = new JTextField[5];
-
-    public JTextField getPhilo5Field() {
-        return philo5Field;
-    }
-
-    public JTextField getPhilo3Field() {
-        return philo3Field;
-    }
-
-    public JTextField getPhilo1Field() {
-        return philo1Field;
-    }
-
-    public JTextField getPhilo4Field() {
-        return philo4Field;
-    }
-
-    public JTextField getPhilo2Field() {
-        return philo2Field;
-    }
-
-    public JTextField getFork5Field() {
-        return fork5Field;
-    }
-
-    public JTextField getFork4Field() {
-        return fork4Field;
-    }
-
-    public JTextField getFork3Field() {
-        return fork3Field;
-    }
-
-    public JTextField getFork2Field() {
-        return fork2Field;
-    }
-
-    public JTextField getFork1Field() {
-        return fork1Field;
-    }
+    private final JTextField [] philoFieldArray = new JTextField[5];
+    private final JTextField [] forkFieldArray = new JTextField[5];
 
     public GuiForm(){
 
@@ -92,11 +51,23 @@ public class GuiForm extends JFrame implements ActionListener {
         philoFieldArray[3] = philo4Field;
         philoFieldArray[4] = philo5Field;
 
+        forkFieldArray[0] = fork1Field;
+        forkFieldArray[1] = fork2Field;
+        forkFieldArray[2] = fork3Field;
+        forkFieldArray[3] = fork4Field;
+        forkFieldArray[4] = fork5Field;
+
     }
 
+    public void setTextFork(int id, String text){
 
+        JTextField tmpField = forkFieldArray[id];
 
-    public void setText(int id, String text){
+        tmpField.setText(text);
+
+    }
+
+    public void setTextPhilosopher(int id, String text){
 
         JTextField tmpField = philoFieldArray[id];
 

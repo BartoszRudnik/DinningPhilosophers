@@ -12,7 +12,7 @@ public class App {
 
         for(int i = 0; i < 5; i++){
 
-            forks[i] = new Fork(i + 1);
+            forks[i] = new Fork(i);
 
         }
 

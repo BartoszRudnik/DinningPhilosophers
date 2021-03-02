@@ -1,6 +1,5 @@
 package org.example;
 
-import javax.swing.*;
 import java.util.Random;
 
 public class Philosopher implements Runnable {
@@ -78,23 +77,26 @@ public class Philosopher implements Runnable {
             while(true){
 
                 System.out.println(philosopherAction(System.nanoTime() + " thinking"));
-                guiForm.setText(this.id, "thinking");
+                guiForm.setTextPhilosopher(this.id, "thinking");
                 threadSleep();
 
                 synchronized (leftFork){
 
                     System.out.println(philosopherAction(System.nanoTime() + " picked up left fork",
                             this.leftFork.getId()));
+                    guiForm.setTextFork(this.leftFork.getId(), "Owned by: " + this.getId());
 
                     synchronized (rightFork){
 
                         System.out.println(philosopherAction(System.nanoTime() + " picked up right fork - eating",
                                 this.rightFork.getId()));
-                        guiForm.setText(this.id, "eating");
+                        guiForm.setTextFork(this.rightFork.getId(), "Owned by: " + this.getId());
+                        guiForm.setTextPhilosopher(this.id, "eating");
                         threadSleep();
 
                         System.out.println(philosopherAction(System.nanoTime() + " put down right fork",
                                 this.rightFork.getId()));
+                        guiForm.setTextFork(this.rightFork.getId(), "Free");
 
                     }
 
@@ -102,9 +104,10 @@ public class Philosopher implements Runnable {
 
                 System.out.println(philosopherAction(System.nanoTime() + "put down left fork",
                         this.leftFork.getId()));
+                guiForm.setTextFork(this.leftFork.getId(), "Free");
 
                 System.out.println(philosopherAction(System.nanoTime() + " sleeping"));
-                guiForm.setText(this.id, "sleeping");
+                guiForm.setTextPhilosopher(this.id, "sleeping");
                 threadSleep();
 
             }
