@@ -1,22 +1,35 @@
 package org.example;
 
+import javax.swing.*;
 import java.util.Random;
 
 public class Philosopher implements Runnable {
 
     private Fork leftFork;
     private Fork rightFork;
-    private String name;
+    private int id;
+
+    private GuiForm guiForm;
 
     public Philosopher(){
 
     }
 
-    public Philosopher(Fork leftFork, Fork rightFork){
+    public Philosopher(GuiForm guiForm, Fork leftFork, Fork rightFork, int id){
 
+        this.guiForm = guiForm;
         this.leftFork = leftFork;
         this.rightFork = rightFork;
+        this.id = id;
 
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Fork getLeftFork() {
@@ -33,14 +46,6 @@ public class Philosopher implements Runnable {
 
     public void setRightFork(Fork rightFork) {
         this.rightFork = rightFork;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     private String philosopherAction(String actionName) {
@@ -73,6 +78,7 @@ public class Philosopher implements Runnable {
             while(true){
 
                 System.out.println(philosopherAction(System.nanoTime() + " thinking"));
+                guiForm.setText(this.id, "thinking");
                 threadSleep();
 
                 synchronized (leftFork){
@@ -84,6 +90,7 @@ public class Philosopher implements Runnable {
 
                         System.out.println(philosopherAction(System.nanoTime() + " picked up right fork - eating",
                                 this.rightFork.getId()));
+                        guiForm.setText(this.id, "eating");
                         threadSleep();
 
                         System.out.println(philosopherAction(System.nanoTime() + " put down right fork",
@@ -97,6 +104,7 @@ public class Philosopher implements Runnable {
                         this.leftFork.getId()));
 
                 System.out.println(philosopherAction(System.nanoTime() + " sleeping"));
+                guiForm.setText(this.id, "sleeping");
                 threadSleep();
 
             }

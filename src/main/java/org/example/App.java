@@ -1,13 +1,11 @@
 package org.example;
 
-import javax.swing.*;
-
 public class App {
 
     public static void main( String[] args ){
 
-        JFrame frame = new GuiForm();
-        frame.setVisible(true);
+        GuiForm guiForm = new GuiForm();
+        guiForm.setVisible(true);
 
         Philosopher [] philosophers = new Philosopher[5];
         Fork [] forks = new Fork[5];
@@ -24,10 +22,10 @@ public class App {
             Fork rightFork = forks[(i + 1) % 5];
 
             if(i % 2 == 0) {
-                philosophers[i] = new Philosopher(leftFork, rightFork);
+                philosophers[i] = new Philosopher(guiForm, leftFork, rightFork, i);
             }
             else{
-                philosophers[i] = new Philosopher(rightFork, leftFork);
+                philosophers[i] = new Philosopher(guiForm, rightFork, leftFork, i);
             }
 
             Thread newThread = new Thread(philosophers[i], "Philosopher " + (i + 1));

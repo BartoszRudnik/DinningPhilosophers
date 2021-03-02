@@ -40,7 +40,7 @@
           <text value="Resource status"/>
         </properties>
       </component>
-      <component id="5bcf7" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+      <component id="5bcf7" class="javax.swing.JTextField" binding="philo5Field">
         <constraints>
           <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -48,7 +48,7 @@
         </constraints>
         <properties/>
       </component>
-      <component id="8b4a2" class="javax.swing.JTextField" binding="textField2" default-binding="true">
+      <component id="8b4a2" class="javax.swing.JTextField" binding="philo3Field">
         <constraints>
           <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -56,7 +56,7 @@
         </constraints>
         <properties/>
       </component>
-      <component id="8260e" class="javax.swing.JTextField" binding="textField3" default-binding="true">
+      <component id="8260e" class="javax.swing.JTextField" binding="philo1Field">
         <constraints>
           <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -64,7 +64,7 @@
         </constraints>
         <properties/>
       </component>
-      <component id="bbd75" class="javax.swing.JTextField" binding="textField4" default-binding="true">
+      <component id="bbd75" class="javax.swing.JTextField" binding="philo4Field">
         <constraints>
           <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -72,7 +72,7 @@
         </constraints>
         <properties/>
       </component>
-      <component id="7b299" class="javax.swing.JTextField" binding="textField5" default-binding="true">
+      <component id="7b299" class="javax.swing.JTextField" binding="philo2Field">
         <constraints>
           <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -80,7 +80,7 @@
         </constraints>
         <properties/>
       </component>
-      <component id="d9bbe" class="javax.swing.JTextField" binding="textField6" default-binding="true">
+      <component id="d9bbe" class="javax.swing.JTextField" binding="fork5Field">
         <constraints>
           <grid row="5" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -88,7 +88,7 @@
         </constraints>
         <properties/>
       </component>
-      <component id="f8389" class="javax.swing.JTextField" binding="textField7" default-binding="true">
+      <component id="f8389" class="javax.swing.JTextField" binding="fork4Field">
         <constraints>
           <grid row="4" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -96,7 +96,7 @@
         </constraints>
         <properties/>
       </component>
-      <component id="4bf20" class="javax.swing.JTextField" binding="textField8" default-binding="true">
+      <component id="4bf20" class="javax.swing.JTextField" binding="fork3Field">
         <constraints>
           <grid row="3" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -104,7 +104,7 @@
         </constraints>
         <properties/>
       </component>
-      <component id="fa190" class="javax.swing.JTextField" binding="textField9" default-binding="true">
+      <component id="fa190" class="javax.swing.JTextField" binding="fork2Field">
         <constraints>
           <grid row="2" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -112,7 +112,7 @@
         </constraints>
         <properties/>
       </component>
-      <component id="372c3" class="javax.swing.JTextField" binding="textField10" default-binding="true">
+      <component id="372c3" class="javax.swing.JTextField" binding="fork1Field">
         <constraints>
           <grid row="1" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -128,31 +128,31 @@
           <text value="State progress"/>
         </properties>
       </component>
-      <component id="17ff1" class="javax.swing.JProgressBar" binding="progressBar1" default-binding="true">
+      <component id="17ff1" class="javax.swing.JProgressBar" binding="philo1Progress">
         <constraints>
           <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties/>
       </component>
-      <component id="77783" class="javax.swing.JProgressBar" binding="progressBar2" default-binding="true">
+      <component id="77783" class="javax.swing.JProgressBar" binding="philo2Progress">
         <constraints>
           <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties/>
       </component>
-      <component id="4d5fa" class="javax.swing.JProgressBar" binding="progressBar3" default-binding="true">
+      <component id="4d5fa" class="javax.swing.JProgressBar" binding="philo3Progress">
         <constraints>
           <grid row="3" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties/>
       </component>
-      <component id="c91be" class="javax.swing.JProgressBar" binding="progressBar4" default-binding="true">
+      <component id="c91be" class="javax.swing.JProgressBar" binding="philo4Progress">
         <constraints>
           <grid row="4" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties/>
       </component>
-      <component id="2995f" class="javax.swing.JProgressBar" binding="progressBar5" default-binding="true">
+      <component id="2995f" class="javax.swing.JProgressBar" binding="philo5Progress">
         <constraints>
           <grid row="5" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -203,7 +203,7 @@
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="1"/>
+          <text value="Philosopher 1 is"/>
         </properties>
       </component>
       <component id="961cc" class="javax.swing.JLabel">
@@ -211,7 +211,7 @@
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="2"/>
+          <text value="Philosopher 2 is"/>
         </properties>
       </component>
       <component id="13608" class="javax.swing.JLabel">
@@ -219,7 +219,7 @@
           <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="3"/>
+          <text value="Philosopher 3 is"/>
         </properties>
       </component>
       <component id="8d85" class="javax.swing.JLabel">
@@ -227,7 +227,7 @@
           <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="4"/>
+          <text value="Philosopher 4 is"/>
         </properties>
       </component>
       <component id="57884" class="javax.swing.JLabel">
@@ -235,7 +235,7 @@
           <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="5"/>
+          <text value="Philosopher 5 is"/>
         </properties>
       </component>
     </children>
