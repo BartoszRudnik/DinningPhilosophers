@@ -96,6 +96,9 @@ public class Philosopher implements Runnable {
                 System.out.println(philosopherAction(System.nanoTime() + "put down left fork",
                         this.leftFork.getId()));
 
+                System.out.println(philosopherAction(System.nanoTime() + " sleeping"));
+                threadSleep();
+
             }
 
         } catch (InterruptedException interruptedException){

@@ -1,8 +1,13 @@
 package org.example;
 
+import javax.swing.*;
+
 public class App {
 
     public static void main( String[] args ){
+
+        JFrame frame = new GuiForm();
+        frame.setVisible(true);
 
         Philosopher [] philosophers = new Philosopher[5];
         Fork [] forks = new Fork[5];
