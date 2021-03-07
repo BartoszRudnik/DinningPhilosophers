@@ -1,12 +1,16 @@
 package org.example;
 
 import java.awt.*;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Philosopher implements Runnable {
 
     private Fork leftFork;
     private Fork rightFork;
     private int id;
+
+    private final AtomicBoolean stopped = new AtomicBoolean(true);
+    private final AtomicBoolean running = new AtomicBoolean(false);
 
     private GuiForm guiForm;
 
@@ -47,6 +51,13 @@ public class Philosopher implements Runnable {
         this.rightFork = rightFork;
     }
 
+    public void interrupt() {
+
+        running.set(false);
+        Thread.currentThread().interrupt();
+
+    }
+
     private String philosopherAction(String actionName) {
 
         return Thread.currentThread().getName() + " " + actionName;
@@ -62,9 +73,12 @@ public class Philosopher implements Runnable {
     @Override
     public void run() {
 
-        try {
+        running.set(true);
+        stopped.set(false);
 
-            while (true) {
+        while (running.get()) {
+
+            try {
 
                 System.out.println(philosopherAction(System.nanoTime() + " thinking"));
                 guiForm.setTextPhilosopher(this.id, "thinking", Color.YELLOW);
@@ -104,13 +118,16 @@ public class Philosopher implements Runnable {
 
                 }
 
+            } catch (InterruptedException interruptedException) {
+
+                Thread.currentThread().interrupt();
+
             }
-
-        } catch (InterruptedException interruptedException) {
-
-            interruptedException.printStackTrace();
 
         }
 
+        stopped.set(true);
+
     }
+
 }

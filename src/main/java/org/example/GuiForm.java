@@ -29,23 +29,25 @@ public class GuiForm extends JFrame implements ActionListener {
 
     private JPanel mainPanel;
 
-    private final JTextField [] philoFieldArray = new JTextField[5];
-    private final JTextField [] forkFieldArray = new JTextField[5];
-    private final JProgressBar [] progressBarArray = new JProgressBar[5];
+    private final JTextField[] philoFieldArray = new JTextField[5];
+    private final JTextField[] forkFieldArray = new JTextField[5];
+    private final JProgressBar[] progressBarArray = new JProgressBar[5];
 
-    public GuiForm(){
+    private final Philosopher[] philosophers = new Philosopher[5];
+    private final Fork[] forks = new Fork[5];
+
+    public GuiForm() {
 
         initialize();
         setTitle("Dinning Philosophers");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(600, 600);
         setLocationRelativeTo(null);
         setContentPane(mainPanel);
         pack();
 
     }
 
-    private void initialize(){
+    private void initialize() {
 
         stopButton.addActionListener(this);
         startButton.addActionListener(this);
@@ -90,25 +92,18 @@ public class GuiForm extends JFrame implements ActionListener {
     public void threadSleep(int id) throws InterruptedException {
 
         Random random = new Random();
-        int delay = random.nextInt(1000) + 3500;
+        final int delay = random.nextInt(1000) + 2500;
 
         final JProgressBar tmpProgressBar = progressBarArray[id];
 
         tmpProgressBar.setMinimum(0);
         tmpProgressBar.setMaximum(delay);
 
-        for(int i = 0; i < delay; i ++) {
+        for (int i = 0; i < delay; i += 50) {
 
-            final int finalI = i;
+            tmpProgressBar.setValue(i);
 
-            SwingUtilities.invokeLater(new Runnable() {
-                @Override
-                public void run() {
-                    tmpProgressBar.setValue(finalI);
-                }
-            });
-
-            TimeUnit.MILLISECONDS.sleep(1);
+            TimeUnit.MILLISECONDS.sleep(50);
 
         }
 
@@ -116,7 +111,7 @@ public class GuiForm extends JFrame implements ActionListener {
 
     }
 
-    public void setTextFork(int id, String text, Color color){
+    public void setTextFork(int id, String text, Color color) {
 
         JTextField tmpField = forkFieldArray[id];
 
@@ -125,7 +120,7 @@ public class GuiForm extends JFrame implements ActionListener {
 
     }
 
-    public void setTextPhilosopher(int id, String text, Color color){
+    public void setTextPhilosopher(int id, String text, Color color) {
 
         JTextField tmpField = philoFieldArray[id];
 
@@ -139,32 +134,36 @@ public class GuiForm extends JFrame implements ActionListener {
 
         Object source = e.getSource();
 
-        if(source == startButton){
+        if (source == startButton) {
 
-            Philosopher [] philosophers = new Philosopher[5];
-            Fork [] forks = new Fork[5];
-
-            for(int i = 0; i < 5; i++){
+            for (int i = 0; i < 5; i++) {
 
                 forks[i] = new Fork(i);
 
             }
 
-            for(int i = 0; i < 5; i++){
+            for (int i = 0; i < 5; i++) {
 
                 Fork leftFork = forks[i];
                 Fork rightFork = forks[(i + 1) % 5];
 
-                if(i % 2 == 0) {
+                if (i % 2 == 0) {
                     philosophers[i] = new Philosopher(this, leftFork, rightFork, i);
-                }
-                else{
+                } else {
                     philosophers[i] = new Philosopher(this, rightFork, leftFork, i);
                 }
 
                 Thread newThread = new Thread(philosophers[i], "Philosopher " + (i + 1));
                 newThread.start();
 
+            }
+
+        }
+
+        if (source == stopButton) {
+
+            for (Philosopher philo : philosophers) {
+                philo.interrupt();
             }
 
         }
