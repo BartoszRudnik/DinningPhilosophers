@@ -112,11 +112,11 @@ public class Philosopher implements Runnable {
                             this.leftFork.getId()));
                     guiForm.setTextFork(this.leftFork.getId(), "Free", Color.GREEN);
 
-                    System.out.println(philosopherAction(System.nanoTime() + " sleeping"));
-                    guiForm.setTextPhilosopher(this.id, "sleeping", Color.WHITE);
-                    guiForm.threadSleep(this.id);
-
                 }
+
+                System.out.println(philosopherAction(System.nanoTime() + " sleeping"));
+                guiForm.setTextPhilosopher(this.id, "sleeping", Color.WHITE);
+                guiForm.threadSleep(this.id);
 
             } catch (InterruptedException interruptedException) {
 
