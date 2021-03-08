@@ -182,8 +182,8 @@ public class GuiForm extends JFrame implements ActionListener {
 
         if (source == stopButton) {
 
-            for (Philosopher philo : philosophers) {
-                philo.interrupt();
+            for (Philosopher philosopher : philosophers) {
+                philosopher.interrupt();
             }
 
         }

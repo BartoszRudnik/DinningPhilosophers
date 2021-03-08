@@ -80,41 +80,29 @@ public class Philosopher implements Runnable {
 
             try {
 
-                System.out.println(philosopherAction(System.nanoTime() + " thinking"));
                 guiForm.setTextPhilosopher(this.id, "thinking", Color.YELLOW);
                 guiForm.threadSleep(this.id);
+
                 guiForm.setTextPhilosopher(this.id, "hungry", Color.RED);
 
                 synchronized (leftFork) {
 
-                    System.out.println(philosopherAction(System.nanoTime() + " picked up left fork",
-                            this.leftFork.getId()));
                     guiForm.setTextFork(this.leftFork.getId(), "Owned by: " + this.getId(), Color.RED);
 
                     synchronized (rightFork) {
 
-                        System.out.println(philosopherAction(System.nanoTime() + " picked up right fork - eating",
-                                this.rightFork.getId()));
-
                         guiForm.setTextFork(this.rightFork.getId(), "Owned by: " + this.getId(), Color.RED);
                         guiForm.setTextPhilosopher(this.id, "eating", Color.GREEN);
-
                         guiForm.threadSleep(this.id);
-
-                        System.out.println(philosopherAction(System.nanoTime() + " put down right fork",
-                                this.rightFork.getId()));
 
                         guiForm.setTextFork(this.rightFork.getId(), "Free", Color.GREEN);
 
                     }
 
-                    System.out.println(philosopherAction(System.nanoTime() + "put down left fork",
-                            this.leftFork.getId()));
                     guiForm.setTextFork(this.leftFork.getId(), "Free", Color.GREEN);
 
                 }
 
-                System.out.println(philosopherAction(System.nanoTime() + " sleeping"));
                 guiForm.setTextPhilosopher(this.id, "sleeping", Color.WHITE);
                 guiForm.threadSleep(this.id);
 
